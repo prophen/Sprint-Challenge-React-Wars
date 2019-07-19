@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import "./StarWars.css";
+
 
 function CardGroup(props) {
   const characters = Array.from(props.characterArray);
