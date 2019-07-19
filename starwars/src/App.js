@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import './App.css';
 
 const App = () => {
@@ -9,7 +10,18 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  const [characterData, setCharacterData] = useState({})
+  const [charactersData, setCharactersData] = useState({})
+
+  useEffect(() => {
+    axios
+      .get(
+        'https://swapi.co/api/people/'
+      ).then(response => {
+        // console.log(response.data.results)
+        setCharactersData(response.data.results)
+      })
+      .catch(error => console.error(error))
+  }, [])
   return (
     <div className="App">
       <h1 className="Header">React Wars</h1>
